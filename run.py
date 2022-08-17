@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -26,7 +25,7 @@ def get_sales_data():
         print("Data should be six numbers, separated by commas.")
         print("Example: 10,20,30,40,50,60\n")
 
-        data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here:\n")
 
         sales_data = data_str.split(",")
 
@@ -117,21 +116,6 @@ def calculate_stock_data(data):
         new_stock_data.append(round(stock_num))
 
     return new_stock_data
-
-def get_stock_values(data):
-    """
-    Print out the calculated stock numbers for each sandwich type.
-    """
-    headings = SHEET.worksheet("stock").get_all_values()[0]
-    # headings = SHEET.worksheet('stock').row_values(1)
-    print("Make the following numbers of sandwiches for next market:\n")
-    # new_data = {}
-    # for heading, stock_num in zip(headings, data):
-    #     new_data[heading] = stock_num
-    # return new_data
-    return {heading: data for heading, data in zip(headings, data)}
-stock_values = get_stock_values(stock_data)
-print(stock_values)
 
 
 def main():

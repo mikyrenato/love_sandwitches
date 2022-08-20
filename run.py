@@ -1,6 +1,9 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
+#pip3 install gspread google-auth
+#pip3 freeze > requirements.txt
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
